@@ -15,7 +15,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Playfair+Display:wght@600;700;800&family=Caveat:wght@600;700&display=swap');
 
 :root{
-  --paper:#F3EBD8;
+  --paper:#FFF9E6;
   --paper-2:#EAE0C6;
   --brown:#7A3D14;
   --blue:#1B4F72;
@@ -108,23 +108,23 @@ html,body{
 .title-block{ flex:1; padding:0 16px; }
 
 .event-title{
-  font-family:'Audiowide', sans-serif;
-  font-weight:400;
-  font-size:clamp(2rem, 5.5vw, 3.8rem);
-  letter-spacing:0.02em;
-  color:var(--brown);
-  margin:6px 0 0;
-  text-shadow:1px 1px 0 rgba(0,0,0,0.05);
+  font-family: 'Stardos Stencil', fantasy, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  letter-spacing: 0.02em;
+  color: var(--brown);
+  margin: 6px 0 0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
 }
 
 .event-subtitle{
-  font-family:'Audiowide', sans-serif;
-  font-weight:400;
-  font-size:clamp(2rem, 2.5vw, 2.8rem);
-  letter-spacing:0.02em;
-  color:var(--brown);
-  margin:6px 0 0;
-  text-shadow:1px 1px 0 rgba(0,0,0,0.05);
+  font-family: 'Stardos Stencil', fantasy, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+  letter-spacing: 0.02em;
+  color: var(--brown);
+  margin: 6px 0 0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
 }
 
 .event-meta{
