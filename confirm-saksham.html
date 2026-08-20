@@ -11,58 +11,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  .confirm-wrap{
-    min-height:59vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:32px 24px;
-    position:relative;
-    z-index:1;
+  /* Button container for centering */
+  .launch-container {
+    text-align: center;
+    margin: 40px 0;
   }
-  .check-badge{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #fff8ea, var(--paper-2));
-    border:3px solid var(--green);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:22px;
-    box-shadow:0 0 0 6px rgba(46,125,50,0.12), 0 8px 20px rgba(0,0,0,0.15);
-    animation:pop 0.6s cubic-bezier(.34,1.56,.64,1);
+
+  /* Launch Button Styling */
+  .launch-btn {
+    padding: 14px 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2E7D32;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
   }
-  .check-badge svg{ width:52px; height:52px; }
-  @keyframes pop{
-    0%{ transform:scale(0); opacity:0; }
-    70%{ transform:scale(1.1); opacity:1; }
-    100%{ transform:scale(1); }
+
+  .launch-btn:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
   }
-  .confirm-title{
-    font-family:'Baloo 2', sans-serif;
-    font-weight:800;
-    color:var(--brown);
-    font-size:clamp(1.5rem, 6vw, 2.1rem);
-    margin:0 0 10px;
+
+  /* Hide confirmation section initially */
+  .confirm-wrap {
+    display: none; /* Changed from display: flex */
+    min-height: 59vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    position: relative;
+    z-index: 1;
   }
-  .confirm-text{
-    color:var(--blue);
-    font-weight:700;
-    font-size:1.05rem;
-    max-width:340px;
-    line-height:1.5;
-    margin:0 0 22px;
+
+  /* Helper class to show section with flex layout */
+  .confirm-wrap.active {
+    display: flex;
   }
-  .confirm-meta{
-    font-size:0.85rem;
-    color:var(--blue);
-    opacity:0.75;
-    line-height:1.6;
+
+  .check-badge {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff8ea, var(--paper-2));
+    border: 3px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    box-shadow: 0 0 0 6px rgba(46,125,50,0.12), 0 8px 20px rgba(0,0,0,0.15);
+    animation: pop 0.6s cubic-bezier(.34,1.56,.64,1);
   }
-  .confirm-taglines{ margin-top:26px; }
+  .check-badge svg { width: 52px; height: 52px; }
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  .confirm-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    color: var(--brown);
+    font-size: clamp(1.5rem, 6vw, 2.1rem);
+    margin: 0 0 10px;
+  }
+  .confirm-text {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 1.05rem;
+    max-width: 340px;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+  .confirm-meta {
+    font-size: 0.85rem;
+    color: var(--blue);
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+  .confirm-taglines { margin-top: 26px; }
 </style>
 </head>
 <body>
@@ -72,19 +104,19 @@
 <!-- ============================ HEADER ============================ -->
 <header class="event-header">
   <div class="crest-row">
-    <div class="crest " aria-hidden="true"><img src="assets/afms.png" alt="AFMS Logo"></div>
+    <div class="crest" aria-hidden="true"><img src="assets/afms.png" alt="AFMS Logo"></div>
 
     <div class="title-block">
       <h1 class="event-title">SAKSHAM 2026</h1>
     </div>
 
-    <div class="crest " aria-hidden="true"><img src="assets/logo.jpg" alt="SAKSHAM LOGO"></div>
+    <div class="crest" aria-hidden="true"><img src="assets/logo.jpg" alt="SAKSHAM LOGO"></div>
   </div>
 
-   <div class="subtitle-block">
-      <h1 class="event-subtitle">“Prolonged Global Conflict: Imperatives for AFMS”</h1>
-   </div>
-	
+  <div class="subtitle-block">
+    <h1 class="event-subtitle">“Prolonged Global Conflict: Imperatives for AFMS”</h1>
+  </div>
+
   <div class="taglines">
     <span class="rule" aria-hidden="true"></span>
     <span class="tagline orange">आरोग्यं परमं बलम्</span>
@@ -92,8 +124,13 @@
   </div>
 </header>
 
+<!-- Launch Button Container -->
+<div class="launch-container" id="launchContainer">
+  <button class="launch-btn" onclick="launchSession()">Launch Session</button>
+</div>
 
-<div class="confirm-wrap">
+<!-- Confirmation Wrap (Hidden by default) -->
+<div class="confirm-wrap" id="confirmWrap">
   <div class="check-badge" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4 13l5 5L20 6" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -118,6 +155,16 @@
     <span class="tagline green">AFMS @ 99</span>
   </div>
 </div>
+
+<script>
+  function launchSession() {
+    // Hide the launch button container
+    document.getElementById('launchContainer').style.display = 'none';
+    
+    // Show the confirmation wrapper
+    document.getElementById('confirmWrap').classList.add('active');
+  }
+</script>
 
 </body>
 </html>
